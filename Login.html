@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="header">
+        <h3>Crowne Plaza</h3>
+    </div>
+
+
+    <ul>
+        <li><a class="active" href="index.html">Home</a></li>
+
+        <li><a href="Menu.html">Menu</a></li>
+        <li><a href="Login.html">Login</a></li>
+      </ul>
+
+    <form style="background-image: url(Images/Blur.png); height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding-top: 30px;
+    font-size:larger;" 
+    id="myForm" onsubmit="validateForm(event)">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email">
+        <span id="emailError" class="error"></span><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone">
+        <span id="phoneError" class="error"></span><br>
+
+        <label for="password">Password:</label>
+        <input type="text" id="password" name="password">
+        <span id="passwordError" class="error"></span><br>
+
+        <input type="submit" value="Submit">
+        
+    </form>
+
+    <!-- ... (your HTML code) ... -->
+
+<script>
+    function validateForm(event) {
+        // Prevent the form from submitting by default
+        event.preventDefault();
+
+        // Get form values
+        var email = document.getElementById('email').value;
+        var phone = document.getElementById('phone').value;
+        var password = document.getElementById('password').value;
+
+        // Regular expressions for validation
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var phoneRegex = /^\d{10}$/;
+        var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+        // Clear previous error messages
+        document.getElementById('emailError').innerHTML = '';
+        document.getElementById('phoneError').innerHTML = '';
+        document.getElementById('passwordError').innerHTML = '';
+
+        // Validate email
+        if (!emailRegex.test(email)) {
+            document.getElementById('emailError').innerHTML = 'Invalid email address';
+        }
+
+        // Validate phone number
+        if (!phoneRegex.test(phone)) {
+            document.getElementById('phoneError').innerHTML = 'Invalid phone number (10 digits)';
+        }
+
+        // Validate password
+        if (!passwordRegex.test(password)) {
+            document.getElementById('passwordError').innerHTML = 'Password must be at least 8 characters long,' + 
+            'contain at least one digit,' +
+            ' one lowercase and one uppercase letter';
+        }
+
+        // If all validations pass, show success message
+        if (emailRegex.test(email) && phoneRegex.test(phone) && passwordRegex.test(password)) {
+            document.getElementById('successMessage').innerHTML = 'Form successfully validated!';
+        }
+    }
+</script>
+
+<!-- ... (your HTML code) ... -->
+<div id="successMessage"></div>
+
+
+</body>
+</html>

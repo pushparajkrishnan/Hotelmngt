@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    .food-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .food-image {
+      width: 100px;
+      height: 100px;
+      margin-right: 10px;
+    }
+
+    .quantity {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+    }
+
+    .quantity input {
+      width: 30px;
+      text-align: center;
+    }
+
+    .total-price {
+      margin-left: 20px;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css">
+  <title>Food Ordering</title>
+</head>
+<body>
+
+    <div class="header">
+        <h3>Raj cafe</h3>
+    </div>
+
+    <ul>
+      <li><a class="active" href="index.html">Home</a></li>
+      <li><a href="#news">Billing</a></li>
+      <li><a href="Menu.html">Menu</a></li>
+      <li><a href="Food.html">Food order</a></li>
+      <li><a href="#about">Login</a></li>
+    </ul>
+    
+
+  <div class="food-item" id="food1">
+    <img src="Images/samosa.jpg" alt="Food 1" class="food-image">
+    <div class="food-details">
+      <h3>Food 1</h3>
+      <p>Price: $10</p>
+    </div>
+    <div class="quantity">
+      <button onclick="decreaseQuantity('food1')">-</button>
+      <input type="text" id="quantity_food1" value="1" readonly>
+      <button onclick="increaseQuantity('food1')">+</button>
+    </div>
+    <div class="total-price" id="total_price_food1">$10</div>
+  </div>
+
+  <div class="food-item" id="food2">
+    <img src="Images/cb.webp" alt="Food 2" class="food-image">
+    <div class="food-details">
+      <h3>Food 2</h3>
+      <p>Price: $15</p>
+    </div>
+    <div class="quantity">
+      <button onclick="decreaseQuantity('food2')">-</button>
+      <input type="text" id="quantity_food2" value="1" readonly>
+      <button onclick="increaseQuantity('food2')">+</button>
+    </div>
+    <div class="total-price" id="total_price_food2">$15</div>
+  </div>
+
+  <script>
+    function increaseQuantity(foodId) {
+      const quantityInput = document.getElementById(`quantity_${foodId}`);
+      const totalDiv = document.getElementById(`total_price_${foodId}`);
+      let quantity = parseInt(quantityInput.value);
+      quantity++;
+      quantityInput.value = quantity;
+      const price = getPrice(foodId);
+      totalDiv.textContent = `$${quantity * price}`;
+    }
+
+    function decreaseQuantity(foodId) {
+      const quantityInput = document.getElementById(`quantity_${foodId}`);
+      const totalDiv = document.getElementById(`total_price_${foodId}`);
+      let quantity = parseInt(quantityInput.value);
+      if (quantity > 1) {
+        quantity--;
+        quantityInput.value = quantity;
+        const price = getPrice(foodId);
+        totalDiv.textContent = `$${quantity * price}`;
+      }
+    }
+
+    function getPrice(foodId) {
+      // Add logic to get the price based on the foodId
+      // For simplicity, using a fixed price in this example
+      if (foodId === 'food1') {
+        return 10;
+      } else if (foodId === 'food2') {
+        return 15;
+      }
+    }
+  </script>
+
+</body>
+</html>

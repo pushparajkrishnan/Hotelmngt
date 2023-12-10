@@ -1,0 +1,79 @@
+.header{
+    color: white;
+    text-align: center;
+    background-color: #1c2baf;
+    padding: 1px;
+    font-size: 20px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1c2baf;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #350af8;
+    border-radius: 10px;
+  }
+
+  .table1{
+    padding: 10px;
+    margin-top: 30px;
+    border: 1px;
+    border-style: solid;
+    border-radius: 10px;
+
+  }
+
+  
+th,td{
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 10px;
+
+    border: 1px;
+    border-style: solid;
+
+  }
+
+.home_screen{
+    background-image: url(Images/crowne-plaza.avif);
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding-top: 30px;
+    font-size:larger;
+
+  }
+
+  .login_block {
+    background-image: url(Images/Blur.png);
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding-top: 30px;
+    font-size:larger;
+    }
+
+

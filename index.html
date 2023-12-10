@@ -1,0 +1,76 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Crowne Plaza homepage. Chennai's first 5 Star hotel</title>
+</head>
+
+<body>
+    <div class="header">
+        <h3>Crowne Plaza</h3>
+    </div>
+
+    <ul>
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="Menu.html">Menu</a></li>
+        <li><a href="Login.html">Login</a></li>
+    </ul>
+
+    <div class="home_screen">
+        <label for="room">Choose room type</label>
+        <select name="room" id="room">
+            <option id="Suite" value="1000">Suite</option>
+            <option id="BusinessClass" value="2000">Business class</option>
+            <option id="Studio" value="3000">Studio</option>
+            <option id="KingRoom" value="4000">King room</option>
+        </select>
+        <input type="date" id="checkin" placeholder="Check in">
+        <input type="date" id="checkout" placeholder="Check out">
+        <button onclick="bookNow()">Book Now</button>
+
+        <div id="bookingDetails"></div>
+
+        <script>
+            function bookNow() {
+                const roomType = document.getElementById('room');
+                const checkinDate = document.getElementById('checkin').value;
+                const checkoutDate = document.getElementById('checkout').value;
+
+                // Validate if both room type and check-in/check-out dates are selected
+                if (!roomType.value || !checkinDate || !checkoutDate) {
+                    alert("Please select room type and both check-in and check-out dates.");
+                    return;
+                }
+
+                // Validate if check-out date is after check-in date
+                if (new Date(checkoutDate) <= new Date(checkinDate)) {
+                    alert("Check-out date should be after check-in date.");
+                    return;
+                }
+
+                // Calculate the number of nights
+                const checkin = new Date(checkinDate);
+                const checkout = new Date(checkoutDate);
+                const nightCount = Math.round((checkout - checkin) / (1000 * 60 * 60 * 24));
+
+                // Calculate total cost
+                const totalPrice = roomType.value * nightCount;
+
+                // Display the booking details
+                const bookingDetails = document.getElementById('bookingDetails');
+                bookingDetails.innerHTML = `
+                    <p>Booking Confirmation:</p>
+                    <p>Room Type: ${roomType.options[roomType.selectedIndex].text}</p>
+                    <p>Check-in: ${checkinDate}</p>
+                    <p>Check-out: ${checkoutDate}</p>
+                    <p>Number of Nights: ${nightCount}</p>
+                    <p>Total Cost: $${totalPrice}</p>
+                `;
+            }
+        </script>
+    </div>
+</body>
+</html>
